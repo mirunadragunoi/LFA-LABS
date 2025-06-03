@@ -90,7 +90,7 @@ python lab1-dfa/dfa_examples.py
 - Mașina Turing Universală
 - Exemple de calcule clasice
 
-### 🎮 Lab 7: Joc cu Automat cu Stivă (PDA)
+### 🎮 Joc cu Automat cu Stivă (PDA)
 **Funcționalități:**
 - Joc interactiv text-based
 - Implementare completă PDA
