@@ -1,0 +1,92 @@
+{
+  "comment": "Example NFA configurations",
+
+  "nfa_example_1": {
+    "description": "NFA that accepts strings ending with '01'",
+    "states": ["q0", "q1", "q2"],
+    "alphabet": ["0", "1"],
+    "transitions": {
+      "q0": {
+        "0": ["q0", "q1"],
+        "1": ["q0"]
+      },
+      "q1": {
+        "1": ["q2"]
+      },
+      "q2": {}
+    },
+    "start_state": "q0",
+    "final_states": ["q2"]
+  },
+
+  "nfa_example_2": {
+    "description": "NFA that accepts strings with '1' in the third position from the end",
+    "states": ["q0", "q1", "q2", "q3"],
+    "alphabet": ["0", "1"],
+    "transitions": {
+      "q0": {
+        "0": ["q0"],
+        "1": ["q0", "q1"]
+      },
+      "q1": {
+        "0": ["q2"],
+        "1": ["q2"]
+      },
+      "q2": {
+        "0": ["q3"],
+        "1": ["q3"]
+      },
+      "q3": {}
+    },
+    "start_state": "q0",
+    "final_states": ["q3"]
+  },
+
+  "nfa_example_3": {
+    "description": "NFA with epsilon transitions - accepts (a|b)*abb",
+    "states": ["q0", "q1", "q2", "q3"],
+    "alphabet": ["a", "b", "ε"],
+    "transitions": {
+      "q0": {
+        "a": ["q0", "q1"],
+        "b": ["q0"],
+        "ε": []
+      },
+      "q1": {
+        "b": ["q2"]
+      },
+      "q2": {
+        "b": ["q3"]
+      },
+      "q3": {}
+    },
+    "start_state": "q0",
+    "final_states": ["q3"]
+  },
+
+  "nfa_example_4": {
+    "description": "NFA that accepts strings containing either '11' or '111' as substring",
+    "states": ["q0", "q1", "q2", "q3"],
+    "alphabet": ["0", "1"],
+    "transitions": {
+      "q0": {
+        "0": ["q0"],
+        "1": ["q0", "q1"]
+      },
+      "q1": {
+        "0": ["q0"],
+        "1": ["q2"]
+      },
+      "q2": {
+        "0": ["q0"],
+        "1": ["q2", "q3"]
+      },
+      "q3": {
+        "0": ["q0", "q3"],
+        "1": ["q2", "q3"]
+      }
+    },
+    "start_state": "q0",
+    "final_states": ["q2", "q3"]
+  }
+}

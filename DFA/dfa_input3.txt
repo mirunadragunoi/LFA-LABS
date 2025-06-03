@@ -1,0 +1,25 @@
+# DFA simplu pentru testare
+# Accepta doar string-ul "ab"
+#
+Sigma:
+a
+b
+End
+#
+States:
+q0,S
+q1
+q2,F
+q3
+End
+#
+Transitions:
+q0, a, q1
+q0, b, q3
+q1, a, q3
+q1, b, q2
+q2, a, q3
+q2, b, q3
+q3, a, q3
+q3, b, q3
+End

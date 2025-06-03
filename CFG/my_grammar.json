@@ -1,0 +1,15 @@
+{
+  "variables": [
+    "B",
+    "A",
+    "S"
+  ],
+  "terminals": [
+    "0",
+    "b",
+    "1",
+    "a"
+  ],
+  "start_variable": "S",
+  "rules": {}
+}

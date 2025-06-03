@@ -1,0 +1,90 @@
+{
+  "name": "Binary string reverser",
+  "description": "Inversează un string binar",
+  "states": [
+    "start",
+    "scan_right",
+    "scan_left",
+    "done"
+  ],
+  "alphabet": [
+    "0",
+    "1"
+  ],
+  "tape_alphabet": [
+    "0",
+    "1",
+    "_"
+  ],
+  "blank_symbol": "_",
+  "start_state": "start",
+  "accept_states": [
+    "done"
+  ],
+  "reject_states": [],
+  "transitions": [
+    {
+      "from_state": "start",
+      "read_symbol": "0",
+      "to_state": "scan_right",
+      "write_symbol": "_",
+      "direction": "R"
+    },
+    {
+      "from_state": "start",
+      "read_symbol": "1",
+      "to_state": "scan_right",
+      "write_symbol": "_",
+      "direction": "R"
+    },
+    {
+      "from_state": "start",
+      "read_symbol": "_",
+      "to_state": "done",
+      "write_symbol": "_",
+      "direction": "S"
+    },
+    {
+      "from_state": "scan_right",
+      "read_symbol": "0",
+      "to_state": "scan_right",
+      "write_symbol": "0",
+      "direction": "R"
+    },
+    {
+      "from_state": "scan_right",
+      "read_symbol": "1",
+      "to_state": "scan_right",
+      "write_symbol": "1",
+      "direction": "R"
+    },
+    {
+      "from_state": "scan_right",
+      "read_symbol": "_",
+      "to_state": "scan_left",
+      "write_symbol": "0",
+      "direction": "L"
+    },
+    {
+      "from_state": "scan_left",
+      "read_symbol": "0",
+      "to_state": "scan_left",
+      "write_symbol": "0",
+      "direction": "L"
+    },
+    {
+      "from_state": "scan_left",
+      "read_symbol": "1",
+      "to_state": "scan_left",
+      "write_symbol": "1",
+      "direction": "L"
+    },
+    {
+      "from_state": "scan_left",
+      "read_symbol": "_",
+      "to_state": "start",
+      "write_symbol": "_",
+      "direction": "R"
+    }
+  ]
+}

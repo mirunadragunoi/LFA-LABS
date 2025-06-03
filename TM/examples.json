@@ -1,0 +1,93 @@
+{
+  "palindrome_checker": {
+    "name": "Palindrome Checker",
+    "description": "Verifica daca un string binar este palindrom",
+    "states": ["q0", "q1", "q2", "q3", "q4", "accept", "reject"],
+    "alphabet": ["0", "1"],
+    "tape_alphabet": ["0", "1", "X", "_"],
+    "blank_symbol": "_",
+    "start_state": "q0",
+    "accept_states": ["accept"],
+    "reject_states": ["reject"],
+    "transitions": [
+      {"from_state": "q0", "read_symbol": "0", "to_state": "q1", "write_symbol": "X", "direction": "R"},
+      {"from_state": "q0", "read_symbol": "1", "to_state": "q2", "write_symbol": "X", "direction": "R"},
+      {"from_state": "q0", "read_symbol": "_", "to_state": "accept", "write_symbol": "_", "direction": "S"},
+      {"from_state": "q0", "read_symbol": "X", "to_state": "q0", "write_symbol": "X", "direction": "R"},
+
+      {"from_state": "q1", "read_symbol": "0", "to_state": "q1", "write_symbol": "0", "direction": "R"},
+      {"from_state": "q1", "read_symbol": "1", "to_state": "q1", "write_symbol": "1", "direction": "R"},
+      {"from_state": "q1", "read_symbol": "_", "to_state": "q3", "write_symbol": "_", "direction": "L"},
+
+      {"from_state": "q2", "read_symbol": "0", "to_state": "q2", "write_symbol": "0", "direction": "R"},
+      {"from_state": "q2", "read_symbol": "1", "to_state": "q2", "write_symbol": "1", "direction": "R"},
+      {"from_state": "q2", "read_symbol": "_", "to_state": "q4", "write_symbol": "_", "direction": "L"},
+
+      {"from_state": "q3", "read_symbol": "0", "to_state": "q0", "write_symbol": "X", "direction": "L"},
+      {"from_state": "q3", "read_symbol": "1", "to_state": "reject", "write_symbol": "1", "direction": "S"},
+      {"from_state": "q3", "read_symbol": "X", "to_state": "q3", "write_symbol": "X", "direction": "L"},
+
+      {"from_state": "q4", "read_symbol": "1", "to_state": "q0", "write_symbol": "X", "direction": "L"},
+      {"from_state": "q4", "read_symbol": "0", "to_state": "reject", "write_symbol": "0", "direction": "S"},
+      {"from_state": "q4", "read_symbol": "X", "to_state": "q4", "write_symbol": "X", "direction": "L"}
+    ]
+  },
+
+  "unary_incrementer": {
+    "name": "Unary Incrementer",
+    "description": "Incrementeaza un numar in reprezentare unara (adauga un '1')",
+    "states": ["start", "find_end", "increment", "done"],
+    "alphabet": ["1"],
+    "tape_alphabet": ["1", "_"],
+    "blank_symbol": "_",
+    "start_state": "start",
+    "accept_states": ["done"],
+    "reject_states": [],
+    "transitions": [
+      {"from_state": "start", "read_symbol": "1", "to_state": "find_end", "write_symbol": "1", "direction": "R"},
+      {"from_state": "start", "read_symbol": "_", "to_state": "increment", "write_symbol": "1", "direction": "S"},
+
+      {"from_state": "find_end", "read_symbol": "1", "to_state": "find_end", "write_symbol": "1", "direction": "R"},
+      {"from_state": "find_end", "read_symbol": "_", "to_state": "increment", "write_symbol": "1", "direction": "S"},
+
+      {"from_state": "increment", "read_symbol": "1", "to_state": "done", "write_symbol": "1", "direction": "S"},
+      {"from_state": "increment", "read_symbol": "_", "to_state": "done", "write_symbol": "_", "direction": "S"}
+    ]
+  },
+
+  "copy_machine": {
+    "name": "String Copier",
+    "description": "Copiaza un string binar (rezultatul va fi xx pentru input x)",
+    "states": ["start", "copy_0", "copy_1", "find_end", "write_0", "write_1", "reset", "done"],
+    "alphabet": ["0", "1"],
+    "tape_alphabet": ["0", "1", "A", "B", "_"],
+    "blank_symbol": "_",
+    "start_state": "start",
+    "accept_states": ["done"],
+    "reject_states": [],
+    "transitions": [
+      {"from_state": "start", "read_symbol": "0", "to_state": "copy_0", "write_symbol": "A", "direction": "R"},
+      {"from_state": "start", "read_symbol": "1", "to_state": "copy_1", "write_symbol": "B", "direction": "R"},
+      {"from_state": "start", "read_symbol": "_", "to_state": "done", "write_symbol": "_", "direction": "S"},
+
+      {"from_state": "copy_0", "read_symbol": "0", "to_state": "copy_0", "write_symbol": "0", "direction": "R"},
+      {"from_state": "copy_0", "read_symbol": "1", "to_state": "copy_0", "write_symbol": "1", "direction": "R"},
+      {"from_state": "copy_0", "read_symbol": "_", "to_state": "write_0", "write_symbol": "0", "direction": "L"},
+
+      {"from_state": "copy_1", "read_symbol": "0", "to_state": "copy_1", "write_symbol": "0", "direction": "R"},
+      {"from_state": "copy_1", "read_symbol": "1", "to_state": "copy_1", "write_symbol": "1", "direction": "R"},
+      {"from_state": "copy_1", "read_symbol": "_", "to_state": "write_1", "write_symbol": "1", "direction": "L"},
+
+      {"from_state": "write_0", "read_symbol": "0", "to_state": "reset", "write_symbol": "0", "direction": "L"},
+      {"from_state": "write_0", "read_symbol": "1", "to_state": "reset", "write_symbol": "1", "direction": "L"},
+
+      {"from_state": "write_1", "read_symbol": "0", "to_state": "reset", "write_symbol": "0", "direction": "L"},
+      {"from_state": "write_1", "read_symbol": "1", "to_state": "reset", "write_symbol": "1", "direction": "L"},
+
+      {"from_state": "reset", "read_symbol": "0", "to_state": "reset", "write_symbol": "0", "direction": "L"},
+      {"from_state": "reset", "read_symbol": "1", "to_state": "reset", "write_symbol": "1", "direction": "L"},
+      {"from_state": "reset", "read_symbol": "A", "to_state": "start", "write_symbol": "0", "direction": "R"},
+      {"from_state": "reset", "read_symbol": "B", "to_state": "start", "write_symbol": "1", "direction": "R"}
+    ]
+  }
+}

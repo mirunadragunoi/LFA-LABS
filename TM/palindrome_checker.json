@@ -1,0 +1,145 @@
+{
+  "name": "Palindrome Checker",
+  "description": "Verifica daca un string binar este palindrom",
+  "states": [
+    "q0",
+    "q1",
+    "q2",
+    "q3",
+    "q4",
+    "accept",
+    "reject"
+  ],
+  "alphabet": [
+    "0",
+    "1"
+  ],
+  "tape_alphabet": [
+    "0",
+    "1",
+    "X",
+    "_"
+  ],
+  "blank_symbol": "_",
+  "start_state": "q0",
+  "accept_states": [
+    "accept"
+  ],
+  "reject_states": [
+    "reject"
+  ],
+  "transitions": [
+    {
+      "from_state": "q0",
+      "read_symbol": "0",
+      "to_state": "q1",
+      "write_symbol": "X",
+      "direction": "R"
+    },
+    {
+      "from_state": "q0",
+      "read_symbol": "1",
+      "to_state": "q2",
+      "write_symbol": "X",
+      "direction": "R"
+    },
+    {
+      "from_state": "q0",
+      "read_symbol": "_",
+      "to_state": "accept",
+      "write_symbol": "_",
+      "direction": "S"
+    },
+    {
+      "from_state": "q0",
+      "read_symbol": "X",
+      "to_state": "q0",
+      "write_symbol": "X",
+      "direction": "R"
+    },
+    {
+      "from_state": "q1",
+      "read_symbol": "0",
+      "to_state": "q1",
+      "write_symbol": "0",
+      "direction": "R"
+    },
+    {
+      "from_state": "q1",
+      "read_symbol": "1",
+      "to_state": "q1",
+      "write_symbol": "1",
+      "direction": "R"
+    },
+    {
+      "from_state": "q1",
+      "read_symbol": "_",
+      "to_state": "q3",
+      "write_symbol": "_",
+      "direction": "L"
+    },
+    {
+      "from_state": "q2",
+      "read_symbol": "0",
+      "to_state": "q2",
+      "write_symbol": "0",
+      "direction": "R"
+    },
+    {
+      "from_state": "q2",
+      "read_symbol": "1",
+      "to_state": "q2",
+      "write_symbol": "1",
+      "direction": "R"
+    },
+    {
+      "from_state": "q2",
+      "read_symbol": "_",
+      "to_state": "q4",
+      "write_symbol": "_",
+      "direction": "L"
+    },
+    {
+      "from_state": "q3",
+      "read_symbol": "0",
+      "to_state": "q0",
+      "write_symbol": "X",
+      "direction": "L"
+    },
+    {
+      "from_state": "q3",
+      "read_symbol": "1",
+      "to_state": "reject",
+      "write_symbol": "1",
+      "direction": "S"
+    },
+    {
+      "from_state": "q3",
+      "read_symbol": "X",
+      "to_state": "q3",
+      "write_symbol": "X",
+      "direction": "L"
+    },
+    {
+      "from_state": "q4",
+      "read_symbol": "1",
+      "to_state": "q0",
+      "write_symbol": "X",
+      "direction": "L"
+    },
+    {
+      "from_state": "q4",
+      "read_symbol": "0",
+      "to_state": "reject",
+      "write_symbol": "0",
+      "direction": "S"
+    },
+    {
+      "from_state": "q4",
+      "read_symbol": "X",
+      "to_state": "q4",
+      "write_symbol": "X",
+      "direction": "L"
+    }
+  ]
+}

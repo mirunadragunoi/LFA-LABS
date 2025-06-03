@@ -1,0 +1,21 @@
+# Acest NFA accepta toate string-urile care se termina cu "10" PLUS
+# toate string-urile care se termina cu "0" (datorita tranzitiei epsilon).
+Sigma:
+0
+1
+ε
+End
+#
+States:
+q0,S
+q1
+q2,F
+End
+#
+Transitions:
+q0, 0, q0
+q0, 1, q0
+q0, 1, q1
+q1, 0, q2
+q0, ε, q1
+End

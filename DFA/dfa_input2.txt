@@ -1,0 +1,19 @@
+# DFA care accepta string-uri binare cu numar par de '1'
+#
+#
+Sigma:
+0
+1
+End
+#
+States:
+q0,S,F
+q1
+End
+#
+Transitions:
+q0, 0, q0
+q0, 1, q1
+q1, 0, q1
+q1, 1, q0
+End

@@ -1,0 +1,104 @@
+{
+  "name": "a^n b^n acceptor",
+  "description": "Acceptă stringuri de forma a^n b^n pentru n >= 1",
+  "states": [
+    "q0",
+    "q1",
+    "q2",
+    "q3",
+    "q4",
+    "accept",
+    "reject"
+  ],
+  "alphabet": [
+    "a",
+    "b"
+  ],
+  "tape_alphabet": [
+    "a",
+    "b",
+    "X",
+    "Y",
+    "_"
+  ],
+  "blank_symbol": "_",
+  "start_state": "q0",
+  "accept_states": [
+    "accept"
+  ],
+  "reject_states": [
+    "reject"
+  ],
+  "transitions": [
+    {
+      "from_state": "q0",
+      "read_symbol": "a",
+      "to_state": "q1",
+      "write_symbol": "X",
+      "direction": "R"
+    },
+    {
+      "from_state": "q1",
+      "read_symbol": "a",
+      "to_state": "q1",
+      "write_symbol": "a",
+      "direction": "R"
+    },
+    {
+      "from_state": "q1",
+      "read_symbol": "Y",
+      "to_state": "q1",
+      "write_symbol": "Y",
+      "direction": "R"
+    },
+    {
+      "from_state": "q1",
+      "read_symbol": "b",
+      "to_state": "q2",
+      "write_symbol": "Y",
+      "direction": "L"
+    },
+    {
+      "from_state": "q2",
+      "read_symbol": "Y",
+      "to_state": "q2",
+      "write_symbol": "Y",
+      "direction": "L"
+    },
+    {
+      "from_state": "q2",
+      "read_symbol": "a",
+      "to_state": "q2",
+      "write_symbol": "a",
+      "direction": "L"
+    },
+    {
+      "from_state": "q2",
+      "read_symbol": "X",
+      "to_state": "q0",
+      "write_symbol": "X",
+      "direction": "R"
+    },
+    {
+      "from_state": "q0",
+      "read_symbol": "Y",
+      "to_state": "q3",
+      "write_symbol": "Y",
+      "direction": "R"
+    },
+    {
+      "from_state": "q3",
+      "read_symbol": "Y",
+      "to_state": "q3",
+      "write_symbol": "Y",
+      "direction": "R"
+    },
+    {
+      "from_state": "q3",
+      "read_symbol": "_",
+      "to_state": "accept",
+      "write_symbol": "_",
+      "direction": "S"
+    }
+  ]
+}

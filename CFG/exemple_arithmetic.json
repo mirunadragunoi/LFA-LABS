@@ -1,0 +1,30 @@
+{
+  "description": "Arithmetic expressions",
+  "variables": [
+    "E",
+    "T",
+    "F"
+  ],
+  "terminals": [
+    "a",
+    "+",
+    "*",
+    "(",
+    ")"
+  ],
+  "start_variable": "E",
+  "rules": {
+    "E": [
+      "E + T",
+      "T"
+    ],
+    "T": [
+      "T * F",
+      "F"
+    ],
+    "F": [
+      "( E )",
+      "a"
+    ]
+  }
+}

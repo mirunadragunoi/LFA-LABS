@@ -1,0 +1,152 @@
+{
+  "name": "String Copier",
+  "description": "Copiaza un string binar (rezultatul va fi xx pentru input x)",
+  "states": [
+    "start",
+    "copy_0",
+    "copy_1",
+    "find_end",
+    "write_0",
+    "write_1",
+    "reset",
+    "done"
+  ],
+  "alphabet": [
+    "0",
+    "1"
+  ],
+  "tape_alphabet": [
+    "0",
+    "1",
+    "A",
+    "B",
+    "_"
+  ],
+  "blank_symbol": "_",
+  "start_state": "start",
+  "accept_states": [
+    "done"
+  ],
+  "reject_states": [],
+  "transitions": [
+    {
+      "from_state": "start",
+      "read_symbol": "0",
+      "to_state": "copy_0",
+      "write_symbol": "A",
+      "direction": "R"
+    },
+    {
+      "from_state": "start",
+      "read_symbol": "1",
+      "to_state": "copy_1",
+      "write_symbol": "B",
+      "direction": "R"
+    },
+    {
+      "from_state": "start",
+      "read_symbol": "_",
+      "to_state": "done",
+      "write_symbol": "_",
+      "direction": "S"
+    },
+    {
+      "from_state": "copy_0",
+      "read_symbol": "0",
+      "to_state": "copy_0",
+      "write_symbol": "0",
+      "direction": "R"
+    },
+    {
+      "from_state": "copy_0",
+      "read_symbol": "1",
+      "to_state": "copy_0",
+      "write_symbol": "1",
+      "direction": "R"
+    },
+    {
+      "from_state": "copy_0",
+      "read_symbol": "_",
+      "to_state": "write_0",
+      "write_symbol": "0",
+      "direction": "L"
+    },
+    {
+      "from_state": "copy_1",
+      "read_symbol": "0",
+      "to_state": "copy_1",
+      "write_symbol": "0",
+      "direction": "R"
+    },
+    {
+      "from_state": "copy_1",
+      "read_symbol": "1",
+      "to_state": "copy_1",
+      "write_symbol": "1",
+      "direction": "R"
+    },
+    {
+      "from_state": "copy_1",
+      "read_symbol": "_",
+      "to_state": "write_1",
+      "write_symbol": "1",
+      "direction": "L"
+    },
+    {
+      "from_state": "write_0",
+      "read_symbol": "0",
+      "to_state": "reset",
+      "write_symbol": "0",
+      "direction": "L"
+    },
+    {
+      "from_state": "write_0",
+      "read_symbol": "1",
+      "to_state": "reset",
+      "write_symbol": "1",
+      "direction": "L"
+    },
+    {
+      "from_state": "write_1",
+      "read_symbol": "0",
+      "to_state": "reset",
+      "write_symbol": "0",
+      "direction": "L"
+    },
+    {
+      "from_state": "write_1",
+      "read_symbol": "1",
+      "to_state": "reset",
+      "write_symbol": "1",
+      "direction": "L"
+    },
+    {
+      "from_state": "reset",
+      "read_symbol": "0",
+      "to_state": "reset",
+      "write_symbol": "0",
+      "direction": "L"
+    },
+    {
+      "from_state": "reset",
+      "read_symbol": "1",
+      "to_state": "reset",
+      "write_symbol": "1",
+      "direction": "L"
+    },
+    {
+      "from_state": "reset",
+      "read_symbol": "A",
+      "to_state": "start",
+      "write_symbol": "0",
+      "direction": "R"
+    },
+    {
+      "from_state": "reset",
+      "read_symbol": "B",
+      "to_state": "start",
+      "write_symbol": "1",
+      "direction": "R"
+    }
+  ]
+}

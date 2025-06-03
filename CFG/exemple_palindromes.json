@@ -1,0 +1,20 @@
+{
+  "description": "Palindromes over {0,1}",
+  "variables": [
+    "S"
+  ],
+  "terminals": [
+    "0",
+    "1"
+  ],
+  "start_variable": "S",
+  "rules": {
+    "S": [
+      "0 S 0",
+      "1 S 1",
+      "0",
+      "1",
+      "epsilon"
+    ]
+  }
+}

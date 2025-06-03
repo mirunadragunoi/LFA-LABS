@@ -1,0 +1,34 @@
+# Acesta este un comentariu - va fi ignorat
+# Definim alfabetul automatului
+#
+Sigma:
+    a
+    b
+    c
+    S
+    F
+End
+#
+# Definim starile automatului
+# state3 este stare finala (,F)
+# q0 este stare de start (,S)
+#
+States:
+    q0,S
+    q1
+    q2
+    q3,F
+    q4
+End
+#
+# Definim tranzitiile: stare_sursa, simbol, stare_destinatie
+#
+Transitions:
+    q0, a, q1
+    q1, b, q2
+    q2, c, q3
+    q3, F, q4
+    q0, S, q1
+    q1, a, q2
+    q2, b, q3
+End
